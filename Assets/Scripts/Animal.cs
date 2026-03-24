@@ -15,8 +15,8 @@ public class Animal : MonoBehaviour, IPointerClickHandler
     protected float behaviorDuration = 3.0f;
     protected float movementDuration = 3.0f;
 
-    protected float chanceOfMovement = 0.4f;
-    protected float chanceOfBehavior = 0.3f;
+    public float chanceOfMovement = 0.4f;
+    public float chanceOfBehavior = 0.3f;
     protected float rollToMove;
     protected float rollToBehave;
     protected bool canRollToMove = true;
@@ -85,7 +85,8 @@ public class Animal : MonoBehaviour, IPointerClickHandler
             picTaken = true;
             Debug.Log("You took a pic!");
             GameManager.Instance.UpdateScore(animalValue);
-
+            chanceOfMovement /= 3;
+            chanceOfBehavior /= 3;
             if (doingBehavior)
             {
                 GameManager.Instance.UpdateScore(behaviorBonus);
@@ -144,7 +145,7 @@ public class Animal : MonoBehaviour, IPointerClickHandler
             rollToMove = Random.value;
             if (rollToMove < chanceOfMovement)
             {
-                Debug.Log($"Movement randomly begun with {rollToMove}!");
+                
                 canRollToMove = false;
                 movementTech = true;
                 
@@ -160,14 +161,14 @@ public class Animal : MonoBehaviour, IPointerClickHandler
     public IEnumerator ResetBehavior()
     {
         yield return new WaitForSeconds(behaviorDuration);
-        Debug.Log("Behavior reset!");
+        //Debug.Log("Behavior reset!");
         doingBehavior = false;
         StartCoroutine(ResetRollToBehave());
     }
 
     public IEnumerator ResetMovement()
     {  yield return new WaitForSeconds(movementDuration);
-        Debug.Log("Movement reset!");
+        //Debug.Log("Movement reset!");
         movementTech = false;
         StartCoroutine(ResetRollToMove());
     }
