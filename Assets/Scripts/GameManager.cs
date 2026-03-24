@@ -9,22 +9,32 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static GameManager Instance { get; private set; } // ENCAPSULATION
 
     public List<GameObject> animals;
-    public float spawnRate = 5.0f;
-    public float spawnRangeZ = 3.0f;
+    private float spawnRate = 5.0f;
+    private float spawnRangeZ = 2.0f;
 
     public TextMeshProUGUI pointCount;
+    public TextMeshProUGUI yourScore;
     public Button instructionsPanel;
-    public int photoPoints = 0;
+    public Button gameOverScreen;
+    private int photoPoints = 0;
+    private bool isGameActive = false;
+
+    public TextMeshProUGUI timerText;
+    private float timeRemaining = 60;
+    private bool timerIsRunning = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void StartGame()
     {
         InvokeRepeating("SpawnAnimal", 3.0f, spawnRate);
         pointCount.gameObject.SetActive(true);
+        timerText.gameObject.SetActive(true);
         instructionsPanel.gameObject.SetActive(false);
+        isGameActive = true;
+        timerIsRunning = true;
         
     }
 
@@ -43,7 +53,21 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        //pointCount.text = $"Points: {photoPoints}";
+        if (timerIsRunning)
+        {
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+                DisplayTime(timeRemaining);
+            }
+
+            else
+            {
+                GameOver();
+                timeRemaining = 0;
+                timerIsRunning = false;
+            }
+        }
     }
 
     public void UpdateScore(int animalValue)
@@ -58,7 +82,30 @@ public class GameManager : MonoBehaviour
                    
             int index = Random.Range(0, animals.Count);
         Vector3 spawnPos = new Vector3(9.2f, 2.0f, Random.Range(spawnRangeZ, -spawnRangeZ));
-        Instantiate(animals[index], spawnPos, animals[index].transform.rotation);
+        if (isGameActive)
+        {
+            Instantiate(animals[index], spawnPos, animals[index].transform.rotation);
+        }
         
+    }
+
+    void GameOver()
+    {
+        isGameActive = false;
+        yourScore.text = $"You scored {photoPoints} points!";
+        gameOverScreen.gameObject.SetActive(true);
+    }
+
+    void DisplayTime(float timeToDisplay)
+    {
+        if (timeToDisplay < 0)
+        {
+            timeToDisplay = 0;
+        }
+
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        timerText.text = string.Format("Time: {0:00}", seconds);
     }
 }

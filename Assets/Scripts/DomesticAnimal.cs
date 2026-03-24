@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DomesticAnimal : Animal
+public class DomesticAnimal : Animal // INHERITANCE
 {
     public int pettingBonus = 1;
 
@@ -13,7 +13,7 @@ public class DomesticAnimal : Animal
 
     
 
-    public override void PetAnimal()
+    public override void PetAnimal() // POLYMORPHISM
     {
         if (!beenPetted)
         {

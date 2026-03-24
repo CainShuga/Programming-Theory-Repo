@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WildAnimal : Animal
+public class WildAnimal : Animal // INHERITANCE
 {
     public int biteCost = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -9,7 +9,7 @@ public class WildAnimal : Animal
         animalValue += 1;
     }
 
-    public override void PetAnimal()
+    public override void PetAnimal() // POLYMORPHISM
     {
         if (!beenPetted)
         {

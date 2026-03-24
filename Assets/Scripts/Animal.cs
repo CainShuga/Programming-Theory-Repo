@@ -12,20 +12,20 @@ public class Animal : MonoBehaviour, IPointerClickHandler
     protected int behaviorBonus = 2;
 
     protected float speed = 2.0f;
-    public float behaviorDuration = 3.0f;
-    public float movementDuration = 3.0f;
+    protected float behaviorDuration = 3.0f;
+    protected float movementDuration = 3.0f;
 
     protected float chanceOfMovement = 0.4f;
     protected float chanceOfBehavior = 0.3f;
     protected float rollToMove;
     protected float rollToBehave;
-    public bool canRollToMove = true;
-    public bool canRollToBehave = true;
-    public bool movementTech = false;
-    public bool doingBehavior = false;
+    protected bool canRollToMove = true;
+    protected bool canRollToBehave = true;
+    protected bool movementTech = false;
+    protected bool doingBehavior = false;
 
-    public bool picTaken = false;
-    public bool beenPetted = false;
+    protected bool picTaken = false;
+    protected bool beenPetted = false;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,12 +54,12 @@ public class Animal : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left) 
         {
-            TakePicture();
+            TakePicture(); // ABSTRACTION
 
         }
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
-            PetAnimal();
+            PetAnimal(); // ABSTRACTION
         }
     }
 
@@ -111,17 +111,13 @@ public class Animal : MonoBehaviour, IPointerClickHandler
     }
 
     public virtual void PerformBehavior()
-    {
-        //Debug.Log("Starting behavior!");
-        
+    {       
         StartCoroutine(ResetBehavior());
     }
 
     public virtual void UniqueMovement()
-    {
-        //Debug.Log("This is a unique movement, which is different for each animal!");
-        
-        StartCoroutine(ResetMovement());
+    {           
+       StartCoroutine(ResetMovement());
     }
 
     private void RandomBehaviorChance()
@@ -132,9 +128,9 @@ public class Animal : MonoBehaviour, IPointerClickHandler
             rollToBehave = Random.value;
             if (rollToBehave < chanceOfBehavior)
             {
-                Debug.Log($"Behavior randomly begun with {rollToBehave}!");
+                
                 canRollToBehave = false;
-                //doingBehavior = true;
+                
                 PerformBehavior();
                 
             }
@@ -151,8 +147,7 @@ public class Animal : MonoBehaviour, IPointerClickHandler
                 Debug.Log($"Movement randomly begun with {rollToMove}!");
                 canRollToMove = false;
                 movementTech = true;
-                //UniqueMovement();
-
+                
             }
         }
     }    

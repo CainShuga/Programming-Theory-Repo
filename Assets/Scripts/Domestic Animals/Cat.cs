@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Cat : DomesticAnimal 
+public class Cat : DomesticAnimal // INHERITANCE
 {
 
-    // OVERRIDES
+    // OVERRIDES (POLYMORPHISM)
 
     public override void UniqueMovement()
     {

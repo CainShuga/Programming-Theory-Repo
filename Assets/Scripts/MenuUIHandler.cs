@@ -24,4 +24,9 @@ public class MenuUIHandler : MonoBehaviour
         GameManager.Instance.StartGame();
         
     }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

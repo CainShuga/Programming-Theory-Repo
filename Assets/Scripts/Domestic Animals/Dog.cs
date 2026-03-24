@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class Dog : DomesticAnimal
+public class Dog : DomesticAnimal // INHERITANCE
 {
 
     void Start()
     {
         animalValue = 2;
     }
-    // OVERRIDES
+    // OVERRIDES (POLYMORPHISM)
 
     public override void UniqueMovement()
     {

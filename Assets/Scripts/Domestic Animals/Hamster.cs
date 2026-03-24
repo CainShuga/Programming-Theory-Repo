@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Hamster : DomesticAnimal
+public class Hamster : DomesticAnimal // INHERITANCE
 { 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,7 +17,7 @@ public class Hamster : DomesticAnimal
         // Hamsters don't have a unique movement, instead having a slightly higher speed. UniqueMovement will never be called on Hamsters.
     }
 
-    // OVERRIDES
+    // OVERRIDES (POLYMORPHISM)
 
     public override void PerformBehavior()
     {
