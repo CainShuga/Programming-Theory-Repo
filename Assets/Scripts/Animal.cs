@@ -8,6 +8,8 @@ public class Animal : MonoBehaviour, IPointerClickHandler
 {
     // VARIABLES
 
+    public TextMeshPro behaviorIndicator;
+
     protected int animalValue = 1;
     protected int behaviorBonus = 2;
 
@@ -22,7 +24,7 @@ public class Animal : MonoBehaviour, IPointerClickHandler
     protected bool canRollToMove = true;
     protected bool canRollToBehave = true;
     protected bool movementTech = false;
-    protected bool doingBehavior = false;
+    public bool doingBehavior = false;
 
     protected bool picTaken = false;
     protected bool beenPetted = false;
@@ -49,6 +51,10 @@ public class Animal : MonoBehaviour, IPointerClickHandler
         if (movementTech)
         {
             UniqueMovement();
+        }
+        if (doingBehavior)
+        { 
+            behaviorIndicator.gameObject.SetActive(true); 
         }
         
     }
@@ -166,6 +172,7 @@ public class Animal : MonoBehaviour, IPointerClickHandler
         yield return new WaitForSeconds(behaviorDuration);
         //Debug.Log("Behavior reset!");
         doingBehavior = false;
+        behaviorIndicator.gameObject.SetActive(false);
         StartCoroutine(ResetRollToBehave());
     }
 

@@ -15,6 +15,10 @@ public class Hamster : DomesticAnimal // INHERITANCE
     {
         MoveLeft();
         // Hamsters don't have a unique movement, instead having a slightly higher speed. UniqueMovement will never be called on Hamsters.
+        if (doingBehavior)
+        {
+            behaviorIndicator.gameObject.SetActive(true);
+        }
     }
 
     // OVERRIDES (POLYMORPHISM)

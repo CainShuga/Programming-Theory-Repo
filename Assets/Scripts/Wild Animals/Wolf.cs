@@ -13,6 +13,10 @@ public class Wolf : WildAnimal
     {
         MoveLeft();
         // Wolves don't have a unique movement, instead having a slightly higher speed. UniqueMovement will never be called on wolves.
+        if (doingBehavior)
+        {
+            behaviorIndicator.gameObject.SetActive(true);
+        }
     }
 
     // OVERRIDES
