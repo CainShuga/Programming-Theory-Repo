@@ -5,7 +5,7 @@ public class Hamster : DomesticAnimal
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        speed = 2.0f;
+        speed *= 2;
         animalValue = 3;
         chanceOfMovement = 0f;
     }

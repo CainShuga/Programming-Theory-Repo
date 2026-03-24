@@ -11,7 +11,7 @@ public class Animal : MonoBehaviour, IPointerClickHandler
     protected int animalValue = 1;
     protected int behaviorBonus = 2;
 
-    protected float speed = 1.0f;
+    protected float speed = 2.0f;
     public float behaviorDuration = 3.0f;
     public float movementDuration = 3.0f;
 
@@ -47,10 +47,7 @@ public class Animal : MonoBehaviour, IPointerClickHandler
         {
             UniqueMovement();
         }
-        if (transform.position.x < -20) 
-        {
-            Destroy(gameObject);
-        }
+        
     }
 
     public virtual void OnPointerClick(PointerEventData eventData)
@@ -75,6 +72,10 @@ public class Animal : MonoBehaviour, IPointerClickHandler
             //Debug.Log("Moving left!");
             transform.Translate(Vector3.left * Time.deltaTime * speed, Space.World);
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
     }
 
     public void TakePicture()

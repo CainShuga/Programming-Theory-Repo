@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SocialPlatforms.Impl;
 using static UnityEngine.GraphicsBuffer;
 using System.Collections.Generic;
@@ -15,12 +16,15 @@ public class GameManager : MonoBehaviour
     public float spawnRangeZ = 3.0f;
 
     public TextMeshProUGUI pointCount;
+    public Button instructionsPanel;
     public int photoPoints = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void StartGame()
     {
         InvokeRepeating("SpawnAnimal", 3.0f, spawnRate);
+        pointCount.gameObject.SetActive(true);
+        instructionsPanel.gameObject.SetActive(false);
         
     }
 
@@ -53,7 +57,7 @@ public class GameManager : MonoBehaviour
                 
                    
             int index = Random.Range(0, animals.Count);
-        Vector3 spawnPos = new Vector3(10.0f, 2.0f, Random.Range(spawnRangeZ, -spawnRangeZ));
+        Vector3 spawnPos = new Vector3(9.2f, 2.0f, Random.Range(spawnRangeZ, -spawnRangeZ));
         Instantiate(animals[index], spawnPos, animals[index].transform.rotation);
         
     }

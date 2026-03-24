@@ -5,7 +5,7 @@ public class Squirrel : WildAnimal
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        speed = 1.5f;
+        speed *= 1.5f;
         animalValue = 3;
         movementDuration = 2.0f;
         chanceOfMovement = 0.4f;
