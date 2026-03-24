@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2647251065106792045}
   m_Layer: 0
   m_Name: Dog
-  m_TagString: Untagged
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,18 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a7740fac69862148be7806a982787ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dog
-  animalValue: 1
-  behaviorBonus: 2
-  speed: 1
-  behaviorDuration: 3
-  movementDuration: 3
   chanceOfMovement: 0.4
   chanceOfBehavior: 0.1
-  rolledChance: 0
-  canRollToMove: 1
-  canRollToBehave: 1
-  movementTech: 0
-  doingBehavior: 0
-  picTaken: 0
-  beenPetted: 0
   pettingBonus: 1

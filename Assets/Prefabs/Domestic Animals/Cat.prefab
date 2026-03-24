@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5421002608696900530}
   m_Layer: 0
   m_Name: Cat
-  m_TagString: Untagged
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,14 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93adb862e63376469ff0f5713706560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cat
-  behaviorDuration: 3
-  movementDuration: 3
-  canRollToMove: 1
-  canRollToBehave: 1
-  movementTech: 0
-  doingBehavior: 0
-  picTaken: 0
-  beenPetted: 0
+  chanceOfMovement: 0.4
+  chanceOfBehavior: 0.3
   pettingBonus: 1
 --- !u!54 &-5421002608696900530
 Rigidbody:

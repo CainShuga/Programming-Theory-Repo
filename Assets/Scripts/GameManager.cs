@@ -26,10 +26,12 @@ public class GameManager : MonoBehaviour
     private float timeRemaining = 60;
     private bool timerIsRunning = false;
 
+    public int spawnedAnimalCount;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void StartGame()
     {
-        InvokeRepeating("SpawnAnimal", 3.0f, spawnRate);
+        InvokeRepeating("SpawnAnimal", 2.0f, spawnRate);
         pointCount.gameObject.SetActive(true);
         timerText.gameObject.SetActive(true);
         instructionsPanel.gameObject.SetActive(false);
@@ -78,15 +80,16 @@ public class GameManager : MonoBehaviour
 
     void SpawnAnimal()
     {
-                
-                   
-            int index = Random.Range(0, animals.Count);
+        
+        int index = Random.Range(0, animals.Count);
         Vector3 spawnPos = new Vector3(9.2f, 2.0f, Random.Range(spawnRangeZ, -spawnRangeZ));
-        if (isGameActive)
+        
+       if (isGameActive && spawnedAnimalCount < 5)
         {
             Instantiate(animals[index], spawnPos, animals[index].transform.rotation);
         }
-        
+        CountSpawnedAnimals("Animal");
+
     }
 
     void GameOver()
@@ -94,6 +97,8 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
         yourScore.text = $"You scored {photoPoints} points!";
         gameOverScreen.gameObject.SetActive(true);
+        pointCount.gameObject.SetActive(false);
+        timerText.gameObject.SetActive(false);
     }
 
     void DisplayTime(float timeToDisplay)
@@ -107,5 +112,11 @@ public class GameManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         timerText.text = string.Format("Time: {0:00}", seconds);
+    }
+
+    void CountSpawnedAnimals(string tag)
+    {
+        GameObject[] spawnedAnimals = GameObject.FindGameObjectsWithTag(tag);
+        spawnedAnimalCount = spawnedAnimals.Length;
     }
 }

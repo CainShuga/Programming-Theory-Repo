@@ -12,8 +12,8 @@ public class Animal : MonoBehaviour, IPointerClickHandler
     protected int behaviorBonus = 2;
 
     protected float speed = 2.0f;
-    protected float behaviorDuration = 3.0f;
-    protected float movementDuration = 3.0f;
+    protected float behaviorDuration;
+    protected float movementDuration;
 
     public float chanceOfMovement = 0.4f;
     public float chanceOfBehavior = 0.3f;
@@ -27,6 +27,7 @@ public class Animal : MonoBehaviour, IPointerClickHandler
     protected bool picTaken = false;
     protected bool beenPetted = false;
 
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,6 +38,8 @@ public class Animal : MonoBehaviour, IPointerClickHandler
     {
         InvokeRepeating("RandomBehaviorChance", 4f, 2f);
         InvokeRepeating("RandomMovementChance", 4.5f, 3f);
+        behaviorDuration = Random.Range(2.0f, 4.0f);
+        movementDuration = Random.Range(1.0f, 3.0f);
     }
 
     // Update is called once per frame

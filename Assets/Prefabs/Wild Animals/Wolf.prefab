@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 840690013470014066}
   m_Layer: 0
   m_Name: Wolf
-  m_TagString: Untagged
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,14 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08be8ef9034045439641d292b7ef1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wolf
-  behaviorDuration: 3
-  movementDuration: 3
-  canRollToMove: 1
-  canRollToBehave: 1
-  movementTech: 0
-  doingBehavior: 0
-  picTaken: 0
-  beenPetted: 0
+  chanceOfMovement: 0.4
+  chanceOfBehavior: 0.3
   biteCost: 1
 --- !u!54 &840690013470014066
 Rigidbody:

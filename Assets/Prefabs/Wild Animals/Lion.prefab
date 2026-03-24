@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3833873729454667328}
   m_Layer: 0
   m_Name: Lion
-  m_TagString: Untagged
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,12 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1aa60f18a7d5514fa48cdcefb693c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lion
-  behaviorDuration: 3
-  movementDuration: 3
-  canRollToMove: 1
-  canRollToBehave: 1
-  movementTech: 0
-  doingBehavior: 0
-  picTaken: 0
-  beenPetted: 0
+  chanceOfMovement: 0.4
+  chanceOfBehavior: 0.3
   biteCost: 1
